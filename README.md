@@ -41,32 +41,38 @@
         };
 
         const okinawaData = [
-            { day: "D1", date: "2/20", theme: "抵達沖繩與北部啟航", activities: [{ time: "09:15", title: "抵達那霸機場 (OKA)", content: "辦理入境手續、提取行李。" }, { time: "10:30", title: "沖宮神社、波上宮", content: "沖繩總鎮守，佇立於懸崖上的絕美神社。" }, { time: "12:00", title: "午餐：泊港漁市場", content: "享用新鮮海鮮或道地拉麵。" }, { time: "15:00", title: "許田休息站", content: "休息一下，買個伴手禮。(記得買美麗海門票)" }, { time: "16:00", title: "Orion 啤酒廠", content: "參觀裝瓶過程與品酒會。" }, { time: "17:00", title: "BIG EXPRESS 本部店", content: "購買晚餐物資。" }, { time: "18:00", title: "前往飯店休息", content: "欣賞高速公路沿線風景。" }] },
-            { day: "D2", date: "2/21", theme: "北部自然與海洋饗宴", activities: [{ time: "10:30", title: "百年古家 大家 阿古豬", content: "在百年老宅內享用高品質阿古豬料理。" }, { time: "13:00", title: "古宇利島、古宇利大橋", content: "跨越絕美漸層藍海，參訪心型岩與海洋塔。" }, { time: "14:30", title: "今歸仁城", content: "古老城堡遺址，著名的取景地。" }, { time: "16:30", title: "美麗海水族館", content: "觀看巨型鯨鯊。(17:00 有海豚表演)" }, { time: "18:30", title: "海人料理 海邦丸", content: "極簡風格空間，供應新鮮生魚片套餐。" }] },
-            { day: "D3", date: "2/22", theme: "中部景觀與異國風情", activities: [{ time: "11:00", title: "萬座毛", content: "象鼻狀海蝕懸崖與遼闊草原。" }, { time: "13:00", title: "殘波岬燈塔", content: "壯麗海岸線與全白燈塔景致。" }, { time: "15:00", title: "永旺來客夢", content: "大型購物商場。" }, { time: "18:00", title: "Green Lodge", content: "辦理入住。" }, { time: "19:00", title: "美國村", content: "美式風格商場，適合散步與晚餐。" }] },
-            { day: "D4", date: "2/23", theme: "南部文化與奇景探索", activities: [{ time: "08:30", title: "普天滿宮", content: "特色為小型鐘乳石洞穴。" },{ time: "10:00", title: "玉泉洞 / 王國村", content: "參觀日本第二大鐘乳石洞。" }, { time: "12:00", title: "午餐：中本天婦羅", content: "在地知名美味，順便找貓咪玩。" }, { time: "14:00", title: "齋場御嶽", content: "琉球聖地，自然與信仰的交匯。" }, { time: "16:00", title: "BicCamera 那霸", content: "電器與雜貨採買。" }, { time: "18:00", title: "國際通自由購物", content: "逛土產、驚安殿堂。" }] },
-            { day: "D5", date: "2/24", theme: "最後巡禮與回程", activities: [{ time: "09:00", title: "西來院", content: "達摩寺。" }, { time: "11:00", title: "琉球玻璃村", content: "互動式展覽及手工藝品攤商。" }, { time: "12:30", title: "ASHIBINAA Outlet", content: "最後血拼。" }, { time: "18:00", title: "抵達機場報到", content: "辦理登機，準備返台。" }] }
-        ];
+  { day: "D1", date: "2/20", theme: "抵達沖繩與北部啟航", activities: [{ time: "09:15", title: "抵達那霸機場 (OKA)", content: "辦理入境手續、提取行李。" }, { time: "10:30", title: "沖宮神社、波上宮", content: "沖繩總鎮守，佇立於懸崖上的絕美神社。" }, { time: "12:00", title: "午餐：泊港漁市場或漁師食堂", content: "享用新鮮海鮮或道地拉麵。" }, { time: "15:00", title: "許田休息站", content: "休息一下，買個伴手禮。(記得買美麗海的門票)" }, { time: "16:00", title: "Orion啤酒廠", content: "參觀裝瓶過程與品酒會。" }, { time: "17:00", title: "BIG EXPRESS 本部店", content: "購買晚餐物資。" }, { time: "18:00", title: "前往北部飯店休息", content: "欣賞高速公路沿線風景。" }] },
+  { day: "D2", date: "2/21", theme: "北部自然與海洋饗宴", activities: [{ time: "10:30", title: "午餐：百年古家 大家 阿古豬", content: "在百年老宅內享用高品質阿古豬料理。" }, { time: "13:00", title: "古宇利島、古宇利大橋", content: "跨越絕美漸層藍海，參訪心型岩與海洋塔。" }, { time: "14:30", title: "今歸仁城", content: "古老城堡遺址，因其季節性盛開的櫻花而成為著名的取景地。。" }, { time: "16:30", title: "美麗海水族館", content: "世界級水族館，黑潮之海觀看巨型鯨鯊。(17:00有海豚表演)" }, { time: "18:30", title: "海人料理 海邦丸", content: "混凝土地板和木桌的極簡主義空間，供應烤魚、生魚片以及套餐。" }, ] },
+  { day: "D3", date: "2/22", theme: "中部景觀與異國風情", activities: [{ time: "11:00", title: "萬座毛", content: "象鼻狀海蝕懸崖與遼闊草原。" }, { time: "13:00", title: "殘波岬燈塔", content: "壯麗海岸線與全白燈塔景致。" }, { time: "15:00", title: "AEON MALL/永旺STYLE 來客夢店", content: "逛街。" }, { time: "18:00", title: "Okinawa Green Lodge", content: "先check-in" }, { time: "19:00", title: "美國村", content: "美式風格的大型露天商場，有許多商店和餐廳進駐，並設有電影院與摩天輪。" }] },
+  { day: "D4", date: "2/23", theme: "南部文化與奇景探索", activities: [{ time: "08:30", title: "普滿天宮", content: "這座古老神社的特色為小型鐘乳石洞穴，吸引遊客前來祈求好運。" },{ time: "10:00", title: "玉泉洞 / 王國村", content: "參觀日本第二大鐘乳石洞與琉球玻璃工藝。" }, { time: "12:00", title: "午餐：中本天婦羅店", content: "在地知名美味天婦羅，順便找貓咪玩耍。" }, { time: "14:00", title: "齋場御嶽", content: "綠意繁茂的聖地，琉球人相信這裡是女神阿摩美久現身之處。" }, { time: "16:00", title: "KOJIMA×BicCamera 那霸店", content: "逛街。" }, { time: "18:00", title: "國際通自由購物", content: "逛土產店、Don Quijote (驚安殿堂)。" }] },
+  { day: "D5", date: "2/24", theme: "最後巡禮與回程", activities: [{ time: "09:00", title: "西來院", content: "達摩寺。" }, { time: "11:00", title: "琉球玻璃村", content: "手工藝中心，有彩繪與吹玻璃課程、互動式展覽及手工藝品攤商。" }, { time: "12:30", title: "沖繩 ASHIBINAA Outlet", content: "購物。" }, { time: "18:00", title: "抵達機場報到", content: "辦理登機，準備搭機返台。" }] }
+];
 
-        const packingData = [
-            { title: "證件與重要文件", items: ["護照正本 (至少6個月效期)", "台灣駕照正本", "日文譯本 (監理站申請)", "日圓現金 (多備零錢)", "信用卡 (實體卡)"] },
-            { title: "電子設備", items: ["網卡/eSIM (先確認開啟)", "行動電源 (隨身登機)", "充電器與線材", "Google Map 離線地圖"] },
-            { title: "個人用品", items: ["防風外套 (海風大)", "摺疊傘/雨衣", "常備藥品 (止瀉、止痛)", "保濕乳液/護唇膏"] }
-        ];
+const packingData = [
+  { title: "證件與重要文件", items: ["護照正本  (至少 6 個月以上)", "台灣駕照正本", "日文譯本 (監理站申請)", "日圓現金 (多備零錢)", "信用卡 (實體卡片)"] },
+  { title: "交通與支付用品", items: ["suica/PASMO/ICOCA  ", "手機設定Apple Pay/ipass money(可先儲值，內建有paypay可使用)"] },
+  { title: "電子用品", items: ["日本網卡/eSIM (先確認開啟)", "行動電源 (需隨身登機)", "充電頭/線 (Type-C/Lightning)", "翻譯App/Google Map", "相機"] },
+  { title: "衣物與隨身用品", items: ["防風外套 (沖繩海風大)",  "摺疊傘/雨衣", "環保購物袋 (日本減塑)"] },
+  { title: "個人清潔與保養(日本偏乾燥)", items: ["牙刷、牙膏", "乳液", "護唇膏、護手霜", "口罩"] },
+  { title: "醫藥與健康用品", items: ["OK繃", "常備藥品 (感冒、止瀉、止痛、暈車)", "濕紙巾", "袖珍包衛生紙(日本的衛生紙很貴)"] }
+];
 
-        const etiquetteData = [
-            { title: "⚠️ 自駕守則", content: "左側通行。紅燈不能左轉。看到「止まれ」必須完全停下3秒。" },
-            { title: "首次赴日注意", content: "垃圾難找，請隨身帶塑膠袋。公眾場合手機轉靜音，神社請脫帽表示禮貌。" },
-            { title: "退稅基本規則", content: "滿 5,000 日圓可免稅。消耗品封袋後不可在日本拆封。" }
-        ];
 
-        const translationData = [
-            { label: "你好", jp: "こんにちは。", romaji: "Konnichiwa." },
-            { label: "不好意思 (叫人/借過)", jp: "すみません。", romaji: "Sumimasen." },
-            { label: "請給我這個", jp: "これをください。", romaji: "Kore o kudasai." },
-            { label: "謝謝", jp: "ありがとうございます。", romaji: "Arigatou gozaimasu." },
-            { label: "沒問題", jp: "大丈夫です。", romaji: "Daijoubu desu." }
-        ];
+const etiquetteData = [
+  { title: "⚠️ 自駕核心守則", content: ["右駕，但靠左行駛。遇到紅燈要左轉必須等綠燈。", "遇到「止まれ」標誌必須完全停下3秒，左右觀察後再走。", "禁止路邊違停，請找停車場。"] },
+  { title: "首次赴日注意", content: ["垃圾分類非常嚴格，路上難找垃圾桶，建議隨身帶塑膠袋。", "電車或公眾場合請將手機轉靜音，不要大聲喧嘩。", "在神社時就算沒有祭拜也要脫帽已表示禮貌。日本禁止路邊抽菸，請找吸菸室或著有熄菸桶的地方"] },
+  { title: "餐廳禮儀", content: ["點餐時若需服務，舉手輕聲說「すみません (Sumimasen)」即可。", "在商店街時禁止邊走邊吃，請在店家旁吃完。"] },
+  { title: "日本退稅基本規則", content: ["通常消費滿 5,000 日圓即可免稅。", "接帳時出示護照跟店員說tax free（不是在機場退稅）", "一般物品（衣服、包包、電器）退稅後 可以馬上用、穿、背。", "消耗品（零食、藥妝、保養品）一定會被封袋，出境前不能拆、不能用"] }
+];
+
+const translationData = [
+  { label: "你好", jp: "こんにちは。", romaji: "Konnichiwa." },
+  { label: "沒問題/不用", jp: "大丈夫です。", romaji: "Daijoubu desu." },
+  { label: "我不太會日文？", jp: "日本語があまり分かりません。？", romaji: "Chuushajou wa arimasu ka?" },
+  { label: "請給我這個", jp: "これをください。", romaji: "Kore o kudasai." },
+  { label: "不好意思 (叫人/借過)", jp: "すみません。", romaji: "Sumimasen." },
+  { label: "謝謝", jp: "ありがとうございます。", romaji: "Arigatou gozaimasu." }
+];
 
         const App = () => {
             const [activeTab, setActiveTab] = useState('home');
