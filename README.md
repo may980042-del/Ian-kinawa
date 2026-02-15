@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -10,10 +9,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans TC', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden; /* 防止水平捲動 */
+        }
         .animate-in { animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        /* 隱藏捲軸但保留功能 */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -24,7 +26,7 @@
     <script type="text/babel">
         const { useState } = React;
 
-        // --- 圖標組件 (SVG 實作) ---
+        // --- 圖標組件 ---
         const Icon = ({ name, className = "w-5 h-5" }) => {
             const icons = {
                 Home: <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M9 22V12h6v10"/></svg>,
@@ -73,86 +75,81 @@ const translationData = [
   { label: "不好意思 (叫人/借過)", jp: "すみません。", romaji: "Sumimasen." },
   { label: "謝謝", jp: "ありがとうございます。", romaji: "Arigatou gozaimasu." }
 ];
-
         const App = () => {
             const [activeTab, setActiveTab] = useState('home');
 
             const renderHome = () => (
-                <div className="space-y-5 animate-in max-w-lg mx-auto pb-32">
-                    {/* 航班卡片 */}
-                    <div className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50">
-                        <div className="flex justify-between items-center mb-6 text-slate-400">
-                            <span className="text-[10px] font-black uppercase tracking-widest">BR112 / CI123</span>
+                <div className="space-y-4 animate-in w-full max-w-md mx-auto pb-32">
+                    <div className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50">
+                        <div className="flex justify-between items-center mb-5 text-slate-400">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Flight Schedule</span>
                             <span className="text-[10px] font-black uppercase tracking-widest">2026 Winter</span>
                         </div>
                         <div className="space-y-6">
-                            <div className="flex justify-between items-center px-2">
+                            <div className="flex justify-between items-center px-1">
                                 <div className="text-center">
-                                    <div className="text-3xl font-black text-slate-800">06:55</div>
-                                    <div className="text-[10px] font-bold text-slate-400 uppercase">Taipei</div>
+                                    <div className="text-2xl font-black text-slate-800">06:55</div>
+                                    <div className="text-[9px] font-bold text-slate-400 uppercase">TPE</div>
                                 </div>
-                                <Icon name="Plane" className="text-slate-100 w-10 h-10 rotate-90" />
+                                <Icon name="Plane" className="text-slate-100 w-8 h-8 rotate-90" />
                                 <div className="text-center">
-                                    <div className="text-3xl font-black text-slate-800">09:15</div>
-                                    <div className="text-[10px] font-bold text-slate-400 uppercase">Okinawa</div>
+                                    <div className="text-2xl font-black text-slate-800">09:15</div>
+                                    <div className="text-[9px] font-bold text-slate-400 uppercase">OKA</div>
                                 </div>
                             </div>
                             <div className="border-t border-dashed border-slate-100"></div>
-                            <div className="flex justify-between items-center px-2">
+                            <div className="flex justify-between items-center px-1">
                                 <div className="text-center">
-                                    <div className="text-3xl font-black text-slate-800">20:20</div>
-                                    <div className="text-[10px] font-bold text-slate-400 uppercase">Okinawa</div>
+                                    <div className="text-2xl font-black text-slate-800">20:20</div>
+                                    <div className="text-[9px] font-bold text-slate-400 uppercase">OKA</div>
                                 </div>
-                                <Icon name="Plane" className="text-slate-100 w-10 h-10 -rotate-90" />
+                                <Icon name="Plane" className="text-slate-100 w-8 h-8 -rotate-90" />
                                 <div className="text-center">
-                                    <div className="text-3xl font-black text-slate-800">21:00</div>
-                                    <div className="text-[10px] font-bold text-slate-400 uppercase">Taipei</div>
+                                    <div className="text-2xl font-black text-slate-800">21:00</div>
+                                    <div className="text-[9px] font-bold text-slate-400 uppercase">TPE</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* VJW 連結 */}
-                    <a href="https://www.vjw.digital.go.jp/" target="_blank" className="bg-[#EBF5FF] rounded-[24px] p-6 shadow-sm border border-blue-100 flex items-center justify-between active:scale-95 transition-transform">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-blue-500">
-                                <Icon name="Clipboard" className="w-6 h-6" />
+                    <a href="https://www.vjw.digital.go.jp/" target="_blank" className="bg-[#EBF5FF] rounded-[24px] p-5 shadow-sm border border-blue-100 flex items-center justify-between active:scale-[0.98] transition-all">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center text-blue-500 shrink-0">
+                                <Icon name="Clipboard" className="w-5 h-5" />
                             </div>
                             <div>
                                 <h4 className="text-sm font-black text-slate-700">Visit Japan Web</h4>
-                                <p className="text-[10px] text-slate-400 font-bold">入境、海關申報</p>
+                                <p className="text-[10px] text-slate-400 font-bold">入境與海關申報</p>
                             </div>
                         </div>
-                        <Icon name="External" className="w-5 h-5 text-blue-400" />
+                        <Icon name="External" className="w-4 h-4 text-blue-400" />
                     </a>
 
-                    {/* 住宿卡片 */}
-                    <div className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50">
+                    <div className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50">
                         <div className="flex items-center gap-2 mb-4 text-blue-400 font-black text-sm"><Icon name="Hotel" /> 住宿飯店</div>
-                        <div className="space-y-3">
-                            <div className="p-4 bg-slate-50 rounded-2xl">
-                                <p className="text-[9px] font-black text-blue-400 uppercase mb-0.5">D1-D2 北部</p>
-                                <h4 className="text-sm font-black text-slate-700">Private villa Gushikumui</h4>
+                        <div className="space-y-2">
+                            <div className="p-3 bg-slate-50 rounded-xl">
+                                <p className="text-[9px] font-black text-blue-400 uppercase">D1-D2 北部</p>
+                                <h4 className="text-xs font-bold text-slate-700 break-words">Private villa Gushikumui</h4>
                             </div>
-                            <div className="p-4 bg-slate-50 rounded-2xl">
-                                <p className="text-[9px] font-black text-blue-400 uppercase mb-0.5">D3-D4 那霸</p>
-                                <h4 className="text-sm font-black text-slate-700">Okinawa Green Lodge</h4>
+                            <div className="p-3 bg-slate-50 rounded-xl">
+                                <p className="text-[9px] font-black text-blue-400 uppercase">D3-D4 那霸</p>
+                                <h4 className="text-xs font-bold text-slate-700 break-words">Okinawa Green Lodge</h4>
                             </div>
                         </div>
                     </div>
 
-                    {/* 緊急聯絡 */}
-                    <div className="bg-[#FF9B9B] rounded-[24px] p-6 text-white shadow-lg relative overflow-hidden">
-                        <Icon name="Phone" className="absolute -right-4 -top-4 opacity-20 w-24 h-24" />
-                        <h3 className="font-black text-sm mb-4">緊急聯繫專線</h3>
-                        <div className="space-y-2">
+                    <div className="bg-[#FF9B9B] rounded-[24px] p-5 text-white shadow-lg relative overflow-hidden">
+                        <Icon name="Phone" className="absolute -right-4 -top-4 opacity-20 w-20 h-20" />
+                        <h3 className="font-black text-sm mb-3">緊急聯繫</h3>
+                        <div className="grid grid-cols-1 gap-2">
                             <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-                                <p className="text-[9px] font-black opacity-70">外交部領務局專線</p>
-                                <p className="text-sm font-black">+886-800-085-095</p>
+                                <p className="text-[9px] font-black opacity-70">領務局專線</p>
+                                <p className="text-xs font-black">+886-800-085-095</p>
                             </div>
                             <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
                                 <p className="text-[9px] font-black opacity-70">駐那霸辦事處</p>
-                                <p className="text-sm font-black">090-1942-1368</p>
+                                <p className="text-xs font-black">090-1942-1368</p>
                             </div>
                         </div>
                     </div>
@@ -160,22 +157,21 @@ const translationData = [
             );
 
             const renderList = () => (
-                <div className="space-y-4 max-w-lg mx-auto pb-32 animate-in">
-                    <div className="px-2 mb-4">
-                        <h2 className="text-2xl font-black text-slate-800">行李清單</h2>
-                        <p className="text-sm text-slate-400 font-bold italic">準備妥當，安心出發</p>
+                <div className="space-y-4 w-full max-w-md mx-auto pb-32 animate-in">
+                    <div className="px-1 mb-4">
+                        <h2 className="text-xl font-black text-slate-800">行李清單</h2>
                     </div>
                     {packingData.map((sec, i) => (
-                        <div key={i} className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50">
+                        <div key={i} className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50">
                             <h3 className="text-sm font-black text-blue-400 mb-4 flex items-center gap-2">
-                                <div className="w-1 h-4 bg-blue-400 rounded-full"></div>
+                                <div className="w-1 h-3 bg-blue-400 rounded-full"></div>
                                 {sec.title}
                             </h3>
-                            <div className="space-y-4">
+                            <div className="space-y-3">
                                 {sec.items.map((item, j) => (
-                                    <label key={j} className="flex items-center gap-3 text-sm font-bold text-slate-600 cursor-pointer">
-                                        <input type="checkbox" className="w-6 h-6 rounded-lg border-2 border-slate-200 accent-blue-500 shrink-0" /> 
-                                        <span>{item}</span>
+                                    <label key={j} className="flex items-start gap-3 text-xs font-bold text-slate-600 cursor-pointer active:opacity-60">
+                                        <input type="checkbox" className="w-5 h-5 rounded-md border-2 border-slate-200 accent-blue-500 shrink-0 mt-0.5" /> 
+                                        <span className="leading-tight">{item}</span>
                                     </label>
                                 ))}
                             </div>
@@ -185,56 +181,57 @@ const translationData = [
             );
 
             const renderInfo = () => (
-                <div className="space-y-4 max-w-lg mx-auto pb-32 animate-in">
-                    <div className="px-2 mb-4">
-                        <h2 className="text-2xl font-black text-slate-800">注意事項</h2>
-                        <p className="text-sm text-slate-400 font-bold italic">給自駕與日本新手家人</p>
+                <div className="space-y-4 w-full max-w-md mx-auto pb-32 animate-in text-slate-800">
+                    <div className="px-1 mb-4">
+                        <h2 className="text-xl font-black text-slate-800">注意事項</h2>
                     </div>
                     {etiquetteData.map((item, i) => (
-                        <div key={i} className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50">
+                        <div key={i} className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50 overflow-hidden">
                             <div className="flex items-center gap-2 mb-3">
-                                <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500">
-                                    <Icon name="Lightbulb" className="w-4 h-4" />
-                                </div>
-                                <h3 className="text-lg font-black text-slate-700">{item.title}</h3>
+                                <Icon name="Lightbulb" className="w-4 h-4 text-blue-500" />
+                                <h3 className="text-base font-black text-slate-700">{item.title}</h3>
                             </div>
-                            <p className="text-xs text-slate-500 font-bold leading-relaxed bg-slate-50 p-4 rounded-xl">{item.content}</p>
+                            <ul className="space-y-1.5 bg-slate-50 p-4 rounded-xl list-disc list-inside">
+                                {item.content.map((line, k) => (
+                                    <li key={k} className="text-[11px] font-bold leading-relaxed text-slate-600 break-words">{line}</li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
                 </div>
             );
 
             const renderTranslate = () => (
-                <div className="space-y-3 max-w-lg mx-auto pb-32 animate-in">
-                    <div className="px-2 mb-4">
-                        <h2 className="text-2xl font-black text-slate-800">溝通小幫手</h2>
+                <div className="space-y-3 w-full max-w-md mx-auto pb-32 animate-in">
+                    <div className="px-1 mb-4">
+                        <h2 className="text-xl font-black text-slate-800">溝通小幫手</h2>
                     </div>
                     {translationData.map((p, i) => (
                         <div key={i} className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50 active:bg-blue-50 transition-colors">
-                            <p className="text-[10px] font-bold text-slate-400 mb-1">{p.label}</p>
-                            <p className="text-xl font-black text-slate-800">{p.jp}</p>
-                            <p className="text-[11px] font-medium text-blue-400 italic">{p.romaji}</p>
+                            <p className="text-[9px] font-bold text-slate-400 mb-1">{p.label}</p>
+                            <p className="text-lg font-black text-slate-800">{p.jp}</p>
+                            <p className="text-[10px] font-medium text-blue-400 italic">{p.romaji}</p>
                         </div>
                     ))}
                 </div>
             );
 
             const renderDay = (idx) => (
-                <div className="max-w-lg mx-auto pb-32 animate-in">
-                    <div className="flex justify-between items-end mb-8 px-2">
+                <div className="w-full max-w-md mx-auto pb-32 animate-in">
+                    <div className="flex justify-between items-end mb-6 px-1">
                         <div>
-                            <h2 className="text-4xl font-black text-slate-800">{okinawaData[idx].date}</h2>
-                            <p className="text-blue-500 font-black text-sm uppercase tracking-wider">{okinawaData[idx].theme}</p>
+                            <h2 className="text-3xl font-black text-slate-800 tracking-tight">{okinawaData[idx].date}</h2>
+                            <p className="text-blue-500 font-black text-[10px] uppercase tracking-wider">{okinawaData[idx].theme}</p>
                         </div>
                         <div className="text-4xl font-black text-slate-100">{okinawaData[idx].day}</div>
                     </div>
                     <div className="space-y-4">
                         {okinawaData[idx].activities.map((act, i) => (
-                            <div key={i} className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50 flex gap-4">
-                                <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-300 font-black text-[10px] shrink-0">{act.time}</div>
-                                <div>
-                                    <h3 className="text-lg font-black text-slate-700">{act.title}</h3>
-                                    <p className="text-xs text-slate-400 font-bold leading-relaxed">{act.content}</p>
+                            <div key={i} className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-50 flex gap-4">
+                                <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300 font-black text-[9px] shrink-0 mt-1">{act.time}</div>
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="text-base font-black text-slate-700 mb-1 break-words">{act.title}</h3>
+                                    <p className="text-[11px] text-slate-400 font-bold leading-relaxed break-words">{act.content}</p>
                                 </div>
                             </div>
                         ))}
@@ -243,13 +240,13 @@ const translationData = [
             );
 
             return (
-                <div className="min-h-screen bg-[#F0F4F8] flex flex-col">
-                    <header className="w-full bg-[#9EB4CD] pt-16 pb-12 text-center">
-                        <p className="text-[10px] tracking-[0.6em] font-black text-white/80 uppercase">Family Trip 2026</p>
-                        <h1 className="text-5xl font-black text-white tracking-tighter">Okinawa</h1>
+                <div className="min-h-screen bg-[#F0F4F8] flex flex-col w-full overflow-x-hidden">
+                    <header className="w-full bg-[#9EB4CD] pt-12 pb-10 text-center shrink-0">
+                        <p className="text-[9px] tracking-[0.5em] font-black text-white/80 uppercase">Family Trip 2026</p>
+                        <h1 className="text-4xl font-black text-white tracking-tighter mt-1">OKINAWA</h1>
                     </header>
 
-                    <main className="w-full px-4 py-8 flex-grow">
+                    <main className="w-full px-4 py-6 flex-grow">
                         {activeTab === 'home' && renderHome()}
                         {activeTab === 'list' && renderList()}
                         {activeTab === 'info' && renderInfo()}
@@ -257,27 +254,27 @@ const translationData = [
                         {typeof activeTab === 'number' && renderDay(activeTab)}
                     </main>
 
-                    {/* 底部導覽列 */}
-                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
-                        <nav className="bg-white/90 backdrop-blur-xl border border-white shadow-2xl rounded-[32px] p-2 flex items-center justify-between">
-                            <div className="flex items-center gap-1">
-                                <button onClick={() => setActiveTab('home')} className={`p-3 rounded-[20px] transition-all ${activeTab === 'home' ? 'bg-[#98B2D1] text-white' : 'text-slate-400'}`}>
-                                    <Icon name="Home" />
+                    {/* 底部導覽列 - 寬度優化 */}
+                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[94%] max-w-sm z-50">
+                        <nav className="bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl rounded-[28px] p-1.5 flex items-center justify-between">
+                            <div className="flex items-center gap-0.5">
+                                <button onClick={() => setActiveTab('home')} className={`p-2.5 rounded-[18px] transition-all ${activeTab === 'home' ? 'bg-[#98B2D1] text-white' : 'text-slate-300'}`}>
+                                    <Icon name="Home" className="w-5 h-5" />
                                 </button>
-                                <button onClick={() => setActiveTab('list')} className={`p-3 rounded-[20px] transition-all ${activeTab === 'list' ? 'bg-[#98B2D1] text-white' : 'text-slate-400'}`}>
-                                    <Icon name="CheckList" />
+                                <button onClick={() => setActiveTab('list')} className={`p-2.5 rounded-[18px] transition-all ${activeTab === 'list' ? 'bg-[#98B2D1] text-white' : 'text-slate-300'}`}>
+                                    <Icon name="CheckList" className="w-5 h-5" />
                                 </button>
-                                <button onClick={() => setActiveTab('info')} className={`p-3 rounded-[20px] transition-all ${activeTab === 'info' ? 'bg-[#98B2D1] text-white' : 'text-slate-400'}`}>
-                                    <Icon name="Lightbulb" />
+                                <button onClick={() => setActiveTab('info')} className={`p-2.5 rounded-[18px] transition-all ${activeTab === 'info' ? 'bg-[#98B2D1] text-white' : 'text-slate-300'}`}>
+                                    <Icon name="Lightbulb" className="w-5 h-5" />
                                 </button>
-                                <button onClick={() => setActiveTab('translate')} className={`p-3 rounded-[20px] transition-all ${activeTab === 'translate' ? 'bg-[#98B2D1] text-white' : 'text-slate-400'}`}>
-                                    <Icon name="Languages" />
+                                <button onClick={() => setActiveTab('translate')} className={`p-2.5 rounded-[18px] transition-all ${activeTab === 'translate' ? 'bg-[#98B2D1] text-white' : 'text-slate-300'}`}>
+                                    <Icon name="Languages" className="w-5 h-5" />
                                 </button>
                             </div>
-                            <div className="w-px h-8 bg-slate-100"></div>
-                            <div className="flex gap-1 pr-2">
+                            <div className="w-px h-6 bg-slate-100 mx-1"></div>
+                            <div className="flex gap-0.5 pr-1">
                                 {okinawaData.map((d, i) => (
-                                    <button key={i} onClick={() => setActiveTab(i)} className={`w-9 h-9 rounded-full text-[10px] font-black transition-all ${activeTab === i ? 'text-blue-500 bg-blue-50' : 'text-slate-300'}`}>
+                                    <button key={i} onClick={() => setActiveTab(i)} className={`w-8 h-8 rounded-full text-[9px] font-black transition-all ${activeTab === i ? 'text-blue-500 bg-blue-50' : 'text-slate-300'}`}>
                                         {d.day}
                                     </button>
                                 ))}
